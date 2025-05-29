@@ -1,0 +1,104 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+<!-- Include Custom CSS -->
+<link href="{% static 'admin/auth/user/style2.css' %}" rel="stylesheet">
+<!-- <script src="{% static 'admin/auth/user/scrip.js' %}"></script> -->
+
+
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <div class="form-wrappr">
+            {% for fieldset in adminform %}
+                <div class="fieldset">
+                    <h2>{{ fieldset.name }}</h2>
+                    <div class="fieldset-fields">
+                        {% for line in fieldset %}
+                            {% for field in line %}
+                                <ul class="user-form-field">
+                                    {{ field.label_tag }}
+                                    {{ field.field }}
+                                    {% if field.errors %}
+                                        <div class="error">{{ field.errors }}</div>
+                                    {% endif %}
+                                </ul>
+                            {% endfor %}
+                        {% endfor %}
+                        
+                        {% if fieldset.name == "Permissions" %}
+                            <div class="flex-container">
+                                <!-- Separate Fieldset for Groups -->
+                                <div class="groups-section">
+                                    <h3>Groups</h3>
+                                    <div class="group-fields">
+                                        {% for line in fieldset %}
+                                            {% for field in line %}
+                                                {% if field.name == "Groups" %}
+                                                    <ul class="user-form-field">
+                                                        {{ field.label_tag }}
+                                                        {{ field.field }}
+                                                        {% if field.errors %}
+                                                            <div class="error">{{ field.errors }}</div>
+                                                        {% endif %}
+                                                    </ul>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </div>
+                                    
+                                </div>
+                                <!-- Separate Fieldset for User Permissions -->
+                                <div class="permissions-section">
+                                    <h3>User Permissions</h3>
+                                    <div class="permission-fields">
+                                        {% for line in fieldset %}
+                                            {% for field in line %}
+                                                {% if field.name == "User permissions" %}
+                                                    <ul class="user-form-field">
+                                                        {{ field.label_tag }}
+                                                        {{ field.field }}
+                                                        {% if field.errors %}
+                                                            <div class="error">{{ field.errors }}</div>
+                                                        {% endif %}
+                                                    </ul>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="submit-row" style="padding: 10px; margin-top: px;">
+            <button 
+                type="submit" 
+                style="
+                    padding: 9px 17px; 
+                    background-color: #007acc; 
+                    color: white; 
+                    border: none; 
+                    border-radius: 8px; 
+                    cursor: pointer; 
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+                    transition: all 0.3s ease;"
+                onmouseover="this.style.backgroundColor='#005b99'; this.style.boxShadow='0 6px 8px rgba(0, 0, 0, 0.2)'; this.style.transform='scale(1.05)';" 
+                onmouseout="this.style.backgroundColor='#007acc'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)'; this.style.transform='scale(1)';"
+            >
+                SAVE
+            </button>
+        </div>
+        
+    </form>
+{% endblock %}

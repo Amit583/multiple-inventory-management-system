@@ -1,0 +1,99 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="generator" content="Jekyll v3.8.6">
+  <title>{% block page_title %}Home{% endblock %}</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/navbar-fixed/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/navbar-top-fixed.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-custom">
+    <a class="navbar-brand"><img src="{% static 'img/adani.png' %}" width="90px" height="28px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <!-- <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_location_master' %}">List of Locations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_ssd' %}">List of SSDs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_dtlt' %}">List of DTLTs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_dtltotnetwork' %}">List of OT Networks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_dtltretired' %}">List of Retired DTLTs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_printer' %}">List of Printers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_vcprojectorstv' %}">List of VC Projectors and TVs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'list_ramdetails' %}">List of RAM Details</a>
+        </li>
+      </ul> -->
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>{% block header %}Home{% endblock %}</h1>
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
+
+  <!-- Include jQuery Slim -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+
+  <!-- Include Bootstrap JS Bundle (includes Popper.js) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+    integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

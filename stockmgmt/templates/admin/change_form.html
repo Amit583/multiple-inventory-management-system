@@ -1,0 +1,92 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+{% block extrahead %}
+{{ block.super }}
+<!-- Custom CSS -->
+<link href="{% static 'admin/stylesheet.css' %}" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<!-- JavaScript for Change User -->
+<script>
+    $(document).ready(function() {
+        // Datepicker Initialization
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        // Fields to toggle based on "Operational Status"
+        const fieldsToToggle = [
+            '#id_assigned_to_user',
+            '#id_employee_id',
+            '#id_user_dept',
+            '#id_user_location',
+            '#id_placement'
+        ];
+
+        const operationalStatus = $('#id_operational_status');
+
+        function toggleOperationalFields() {
+            if (operationalStatus.val() === "Operational") {
+                fieldsToToggle.forEach(function(selector) {
+                    $(selector).closest('div').show();
+                });
+            } else {
+                fieldsToToggle.forEach(function(selector) {
+                    $(selector).closest('div').hide();
+                    $(selector).val('');
+                });
+            }
+        }
+
+        operationalStatus.on('change', toggleOperationalFields);
+        toggleOperationalFields();
+
+        // Toggle visibility for "Laptop Issued Date" based on Device Type
+        const deviceType = $('#id_device_type');
+        const laptopIssuedDate = $('#id_laptop_bag_issued_date');
+
+        function toggleLaptopIssuedDateField() {
+            if (deviceType.val() === 'Laptop') {
+                laptopIssuedDate.closest('div').show();
+            } else {
+                laptopIssuedDate.closest('div').hide();
+                laptopIssuedDate.val('');
+            }
+        }
+
+        deviceType.on('change', toggleLaptopIssuedDateField);
+        toggleLaptopIssuedDateField();
+    });
+</script>
+{% endblock %}
+
+{% block field_sets %}
+    <div class="form-wrapper custom-background-page">
+        {% for fieldset in adminform %}
+            {% if fieldset.name %}
+                <h3 class="header">{{ fieldset.name }}</h3>
+            {% endif %}
+            {% for line in fieldset %}
+                {% for field in line %}
+                    <div class="form-field">
+                        {{ field.label_tag }}
+                        {{ field.field }}
+                        {% if field.errors %}
+                            <div class="error">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

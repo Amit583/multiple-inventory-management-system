@@ -1,0 +1,224 @@
+
+/* General Styling for the Page */
+.change-user-page {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 1200px; /* Restrict max width for better readability */
+    padding: 0 15px;
+    color: #333;
+}
+
+.change-user-page h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Button Styling */
+.change-user-page .button,
+.change-user-page input[type=submit],
+.change-user-page .submit-row input {
+    background: #007acc;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.change-user-page .button:hover,
+.change-user-page input[type=submit]:hover {
+    background: #005b99;
+    transform: scale(1.03); /* Subtle scaling effect on hover */
+}
+
+.change-user-page .submit-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    background-color: #f0f8ff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Field Styling */
+.change-user-page input[type="text"],
+.change-user-page input[type="email"],
+.change-user-page input[type="number"],
+.change-user-page input[type="url"],
+.change-user-page input[type="tel"],
+.change-user-page textarea,
+.change-user-page select {
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #d6a8a8;
+    border-radius: 5px;
+    width: 100%; /* Inputs expand to fit the container */
+    box-sizing: border-box;
+    background-color: #fdfdfd;
+    margin-bottom: 15px !important;
+}
+
+.change-user-page input:focus,
+.change-user-page select:focus,
+.change-user-page textarea:focus {
+    outline: none;
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5); /* Subtle glow on focus */
+}
+
+/* Fieldset Styling */
+.fieldset {
+    padding: 15px;
+    margin-bottom: 2px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #9292f08e, #00ffff6d); 
+
+}
+
+/* Flex Container for Fieldsets */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping into new rows */
+    gap: 20px; /* Add spacing between fieldsets */
+    justify-content: space-between;
+}
+
+/* Available Groups Section */
+.groups-available {
+    flex: 1 1 calc(50% - 20px); /* Take 50% of row minus gaps */
+    min-width: 300px; /* Prevent shrinking below this size */
+    max-width: 48%; /* Restrict to half of the container */
+    padding: 15px;
+    background-color: #f9f9fc;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Available Groups Title */
+.groups-available h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Chosen Groups Section */
+.groups-chosen {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 300px;
+    max-width: 48%;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Chosen Groups Title */
+.groups-chosen h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Available Permissions Section */
+.permissions-available {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 300px;
+    max-width: 48%;
+    padding: 15px;
+    background-color: #f9f9fc;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Available Permissions Title */
+.change-user-page .permissions-available h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f40000;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Chosen Permissions Section */
+.permissions-chosen {
+    flex: 1 1 calc(50% - 20px);
+    min-width: 300px;
+    max-width: 48%;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Chosen Permissions Title */
+.permissions-chosen h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+/* Last Login Section */
+.last-login {
+    flex: 1 1 100%; /* Take full width by default */
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.last-login h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Last Login Text */
+.last-login p {
+    font-size: 0.9rem;
+    color: #000000;
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    
+
+    .groups-available,
+    .groups-chosen,
+    .permissions-available,
+    .permissions-chosen {
+        flex: 1 1 100%; /* Take full width */
+        max-width: 100%;
+    }
+}
+
+
+label {
+    font-weight: bolder;
+    color: #000000;
+    font-size: 0.8125rem;
+}

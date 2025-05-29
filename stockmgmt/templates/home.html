@@ -1,0 +1,185 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="generator" content="Jekyll v3.8.6">
+  <title>Home</title>
+  <link rel="icon" href="path/to/favicon.ico">
+
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/navbar-fixed/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/navbar-top-fixed.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-custom">
+    <a class="navbar-brand"><img src="{% static 'img/adani.png' %}" width="90px" height="28px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-admin">
+          <a class="nav-link" href="{% url 'admin' %}">admin</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        {% if request.user.is_authenticated %}
+        <li>
+          <form class="logoutbtn" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">{{ user }} | Logout</button>
+          </form>
+        </li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>WELCOME, {{ user }}</h1>
+      <p class="lead">Select a category to manage the items. You can add, update, or delete items within each category.
+      </p>
+      <ul class="category_select">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm location-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">Locations</h5>
+                <p class="card-text">Manage location details</p>
+                <a href="{% url 'list_location_master' %}" class="btn btn-light btn-block">Manage Locations</a>
+              </div>
+            </div>
+          </div>
+          <!-- Repeat other cards here -->
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm ssd-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">SSD</h5>
+                <p class="card-text">Manage ssd details</p>
+                <a href="{% url 'list_ssd' %}" class="btn btn-light btn-block">SSD</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm dtlt-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">DT LT</h5>
+                <p class="card-text">Manage DT LT details</p>
+                <a href="{% url 'list_dtlt' %}" class="btn btn-light btn-block">Manage DT LT</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm network-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">DT LT OT Network</h5>
+                <p class="card-text">Manage DTLT OT Network</p>
+                <a href="{% url 'list_dtltotnetwork' %}" class="btn btn-light btn-block">Manage DT LT OT Network</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm retired-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">DT LT Retired</h5>
+                <p class="card-text">Manage DT LT Retired</p>
+                <a href="{% url 'list_dtltretired' %}" class="btn btn-light btn-block">Manage DT LT Retired</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm printer-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">Printer</h5>
+                <p class="card-text">Manage printer</p>
+                <a href="{% url 'list_printer' %}" class="btn btn-light btn-block">Manage Printers</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm projector-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">VC Projectors TV</h5>
+                <p class="card-text">Manage VC Projectors TV</p>
+                <a href="{% url 'list_vcprojectorstv' %}" class="btn btn-light btn-block">Manage VC Projectors TV</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mb-4 shadow-sm ram-card">
+              <div class="card-body text-center">
+                <h5 class="card-title">Ram Details</h5>
+                <p class="card-text">Manage Ram Details</p>
+                <a href="{% url 'list_ramdetails' %}" class="btn btn-light btn-block">Manage Ram Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </main>
+
+  <!-- Include jQuery Slim -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+
+  <!-- Include Bootstrap JS Bundle (includes Popper.js) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+    integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+    crossorigin="anonymous"></script>
+    <footer id="admin-footer">
+      <p>&copy; <span id="current-year"></span> Adani Group and Amit Maurya. All rights reserved. Created by Amit Maurya.</p>
+  </footer>
+
+  <script>
+      const startDate = new Date("2025-03-20T12:00:00");
+      const currentDate = new Date();
+
+      if (currentDate >= startDate) {
+          document.getElementById("admin-footer").style.display = "block";
+      }
+
+      const currentYear = new Date().getFullYear();
+      document.getElementById("current-year").textContent = currentYear;
+  </script>
+</body>
+
+</html>

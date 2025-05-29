@@ -1,0 +1,42 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% load i18n static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<link href="{% static 'admin/stylesheet.css' %}" rel="stylesheet">
+
+<div id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'img/adani.png' %}" width="90px" height="28px">
+    </a>
+</div>
+{% if user.is_anonymous %}
+    {% include "admin/color_theme_toggle.html" %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+{% endblock %}
+{% block footer %}
+    <footer id="admin-footer" style="display: none; bottom: 0; left: 0; width: 100%; background-color: #f9f9f9; text-align: center; padding: 10px; border-top: 1px solid #ddd; z-index: 1000; height: 45px;">
+        <p>&copy; <span id="current-year"></span> Adani Group and Amit Maurya. All rights reserved. Created by Amit Maurya.</p>
+    </footer>
+
+    <script>
+        // Set the date when the footer should appear
+        const startDate = new Date("2025-03-23T12:00:00");
+        const currentDate = new Date();
+
+        // Show the footer if the current date and time is equal to or past the start date
+        if (currentDate >= startDate) {
+            document.getElementById("admin-footer").style.display = "block";
+        }
+
+        // Dynamically insert the current year into the footer
+        const currentYear = new Date().getFullYear();
+        document.getElementById("current-year").textContent = currentYear;
+    </script>
+{% endblock %}

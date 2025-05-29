@@ -1,0 +1,207 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="generator" content="Jekyll v3.8.6">
+  <title>List of DTLTs</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/navbar-fixed/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/stylesheet.css'%}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+
+
+
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/navbar-top-fixed.css'%}" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-custom">
+    <a class="navbar-brand"><img src="{% static 'img/adani.png' %}" width="90px" height="28px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_dtlt' %}">Add DTLT</a>
+        </li> -->
+
+      </ul>
+
+    </div>
+    <div>
+      <li class="nav-admin">
+        <a class="nav-link" href="{% url 'admin' %}">admin</a>
+      </li>
+    </div>
+  </nav>
+  <main role="main" class="container-fluid">
+    <div>
+    <div class="jumbotron text-center sticky-header">
+      <h1 class="text-uppercase" style="color: white; text-align: center;">List of DT LT</h1>
+      <!-- <form class="form-inline justify-content-center mt-3" method="GET" action="{% url 'list_dtlt' %}">
+        <div class="form-group mr-2">
+          {{ form.as_p }}
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit">Search</button>
+      </form> -->
+    </div>
+      <div>
+        <form class="form-inline justify-content-center mt-3" method="GET" action="{% url 'list_dtlt' %}">
+          <div class="form-group mr-2">
+            {{ form.as_p }}
+          </div>
+          <button class="btn btn-primary btn-lg" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+    
+
+    <div class="table-responsive table-container">
+      <table class="table table-hover table-bordered table-modern">
+        <thead>
+          <tr>
+            <th>Sr.No</th>
+            <th>Device Type</th>
+            <th>Serial Number</th>
+            <th>Asset Owner Name</th>
+            <th>Laptop Bag Issued Date</th>
+            <th>Manufacturer</th>
+            <th>Model Description</th>
+            <th>PO Number</th>
+            <th>SAP Code</th>
+            <th>Warranty Start Date</th>
+            <th>Warranty End Date</th>
+            <th>Asset Age</th>
+            <th>Asset Age As On</th>
+            <th>Asset Status</th>
+            <th>Asset Tag</th>
+            <th>Host Name</th>
+            <th>Operational Status</th>
+            <th>Operational Remark</th>
+            <th>IP Address</th>
+            <th>Assigned To User</th>
+            <th>Employee ID</th>
+            <th>User Department</th>
+            <th>User Location</th>
+            <th>Placement</th>
+            <th>OS Name</th>
+            <th>OS Version</th>
+            <th>Office Version</th>
+            <th>ANTIVIRUS</th>
+            <th>DLP</th>
+            <th>ENCRYPTION</th>
+            <th>Bigfix</th>
+            <th>RAM Size (GB)</th>
+            <th>Engineer Name</th>
+            <th>DATE</th>
+            <th>LAST UPDATED</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in queryset %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.device_type }}</td>
+            <td>{{ item.serial_number }}</td>
+            <td>{{ item.asset_owner_name }}</td>
+            <td>{{ item.laptop_bag_issued_date }}</td>
+            <td>{{ item.manufacturer }}</td>
+            <td>{{ item.model_description }}</td>
+            <td>{{ item.po_number }}</td>
+            <td>{{ item.sap_code }}</td>
+            <td>{{ item.warranty_start_date }}</td>
+            <td>{{ item.warranty_end_date }}</td>
+            <td>{{ item.asset_age }}</td>
+            <td>{{ item.asset_age_as_on }}</td>
+            <td>{{ item.asset_status }}</td>
+            <td>{{ item.asset_tag }}</td>
+            <td>{{ item.host_name }}</td>
+            <td>{{ item.operational_status }}</td>
+            <td>{{ item.operational_remark }}</td>
+            <td>{{ item.ip_address }}</td>
+            <td>{{ item.assigned_to_user }}</td>
+            <td>{{ item.employee_id }}</td>
+            <td>{{ item.user_dept }}</td>
+            <td>{{ item.user_location }}</td>
+            <td>{{ item.placement }}</td>
+            <td>{{ item.os_name }}</td>
+            <td>{{ item.os_version }}</td>
+            <td>{{ item.office_version }}</td>
+            <td>{{ item.Antivirus }}</td>
+            <td>{{ item.DLP }}</td>
+            <td>{{ item.Encryption }}</td>
+            <td>{{ item.bigfix }}</td>
+            <td>{{ item.ram_size }}</td>
+            <td>{{ item.engineer_name }}</td>
+            <td>{{ item.timestamp }}</td>
+            <td>{{ item.last_updated }}</td>
+            <td>{{ item.remarks }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+
+  <!-- Include jQuery Slim -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+
+  <!-- Include Bootstrap JS Bundle (includes Popper.js) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+    integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+    crossorigin="anonymous"></script>
+    <footer id="admin-footer">
+      <p>&copy; <span id="current-year"></span> Adani Group and Amit Maurya. All rights reserved. Created by Amit Maurya.</p>
+  </footer>
+
+  <script>
+      const startDate = new Date("2025-03-20T12:00:00");
+      const currentDate = new Date();
+
+      if (currentDate >= startDate) {
+          document.getElementById("admin-footer").style.display = "block";
+      }
+
+      const currentYear = new Date().getFullYear();
+      document.getElementById("current-year").textContent = currentYear;
+  </script>
+</body>
+
+</html>
